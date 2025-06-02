@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChat } from "@ai-sdk/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,6 +9,7 @@ import { ArrowDownCircleIcon, BotMessageSquare, Loader, Loader2, Send, X } from 
 import { use, useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import ChatInput from "./ChatInput";
 
 export default function ChatBot() {
 	const [isChatOpen, setIsChatOpen] = useState(false);
@@ -119,7 +119,7 @@ export default function ChatBot() {
 											<div
 												className={`inline-block p-2 px-4 rounded-2xl ${
 													message.role === "user"
-														? "bg-primary text-primary-foreground"
+														? "bg-[#B0DB9C] text-zinc-900" // Applied your desired accent color and white text
 														: "bg-muted"
 												}`}
 											>
@@ -184,9 +184,7 @@ export default function ChatBot() {
 												className="underline cursor-pointer"
 												type="button"
 												onClick={() => stop()}
-											>
-												abort
-											</button>
+											></button>
 										</div>
 									)}
 
@@ -207,7 +205,7 @@ export default function ChatBot() {
 								</ScrollArea>
 							</CardContent>
 							<CardFooter>
-								<form
+								{/* <form
 									onSubmit={handleSubmit}
 									className="flex w-full items-center space-x-2"
 								>
@@ -225,7 +223,13 @@ export default function ChatBot() {
 									>
 										<Send className="size-4" />
 									</Button>
-								</form>
+								</form> */}
+
+								<ChatInput
+									input={input}
+									onInputChange={handleInputChange}
+									onSubmit={handleSubmit}
+								/>
 							</CardFooter>
 						</Card>
 					</motion.div>

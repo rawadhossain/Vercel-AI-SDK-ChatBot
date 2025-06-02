@@ -26,5 +26,11 @@ export const initialMessage = {
 };
 ```
 
+## .env file
+Enter your api key
+```
+GEMINI_API_KEY=yourapikey
+```
+
 ## API Endpoint
 /api/chat: Handles user input and responds with a message
